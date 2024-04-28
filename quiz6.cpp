@@ -1,3 +1,4 @@
+// 202313750 ê¶Œì†Œì˜
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,32 +9,32 @@ typedef struct {
 	int top;
 } StackType;
 
-// ½ºÅÃ ÃÊ±âÈ­ ÇÔ¼ö
+// ìŠ¤íƒ ì´ˆê¸°í™” í•¨ìˆ˜
 void init_stack(StackType* s) {
 	s->top = -1;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(StackType * s) {
 	return (s->top == -1);
 }
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(StackType * s) {
 	return (s->top == (MAX_STACK_SIZE - 1));
 }
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void push(StackType* s, element item) {
 	if (is_full(s)) {
-		fprintf(stderr, "½ºÅÃ overflow\n");
+		fprintf(stderr, "ìŠ¤íƒ overflow\n");
 		return;
 	}
 	else s->data[++(s->top)] = item;
 }
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 element pop(StackType* s) {
 	if (is_empty(s)) {
-		fprintf(stderr, "½ºÅÃ underflow\n");
+		fprintf(stderr, "ìŠ¤íƒ underflow\n");
 		exit(1);
 	}
 	else return s->data[(s->top)--];
@@ -42,12 +43,12 @@ element pop(StackType* s) {
 int main() {
 	int infinity = 987654321;
 	int problem_num = 0;
-	scanf_s("%d", &problem_num); // Å×½ºÆ® ÄÉÀÌ½º ¼ıÀÚ ÀÔ·Â¹Ş±â
+	scanf_s("%d", &problem_num); // í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ ìˆ«ì ì…ë ¥ë°›ê¸°
 	for (int problem = 0; problem < problem_num; problem++) {
 		int query_num = 0;
-		scanf_s("%d", &query_num); // ÁúÀÇÀÇ ¼ıÀÚ ÀÔ·Â¹Ş±â
-		StackType min_stack; //ÃÖ¼Ò°ªÀ» ³Ö´Â ½ºÅÃ
-		StackType max_stack; //ÃÖ´ë°ªÀ» ³Ö´Â ½ºÅÃ
+		scanf_s("%d", &query_num); // ì§ˆì˜ì˜ ìˆ«ì ì…ë ¥ë°›ê¸°
+		StackType min_stack; //ìµœì†Œê°’ì„ ë„£ëŠ” ìŠ¤íƒ
+		StackType max_stack; //ìµœëŒ€ê°’ì„ ë„£ëŠ” ìŠ¤íƒ
 		init_stack(&min_stack);
 		init_stack(&max_stack);
 		push(&min_stack, infinity);
@@ -61,13 +62,13 @@ int main() {
 				scanf_s("%d", &input2);
 				new_block = input2;
 
-				// ÃÖ¼Ò°ª ½ºÅÃÀÇ ¸Ç À§ÀÇ °ªÀ» ºñ±³ÇØ¼­, »õ ºí·Ï°ú, ±âÁ¸ÀÇ °ª Áß ´õ ÀÛÀº °ªÀ» »ğÀÔ
+				// ìµœì†Œê°’ ìŠ¤íƒì˜ ë§¨ ìœ„ì˜ ê°’ì„ ë¹„êµí•´ì„œ, ìƒˆ ë¸”ë¡ê³¼, ê¸°ì¡´ì˜ ê°’ ì¤‘ ë” ì‘ì€ ê°’ì„ ì‚½ì…
 				if (min_stack.data[min_stack.top] > new_block)
 					push(&min_stack, new_block);
 				else
 					push(&min_stack, min_stack.data[min_stack.top]);
 
-				// ÃÖ´ë°ª ½ºÅÃÀÇ ¸Ç À§ÀÇ °ªÀ» ºñ±³ÇØ¼­, »õ ºí·Ï°ú, ±âÁ¸ÀÇ °ª Áß ´õ Å« °ªÀ» »ğÀÔ
+				// ìµœëŒ€ê°’ ìŠ¤íƒì˜ ë§¨ ìœ„ì˜ ê°’ì„ ë¹„êµí•´ì„œ, ìƒˆ ë¸”ë¡ê³¼, ê¸°ì¡´ì˜ ê°’ ì¤‘ ë” í° ê°’ì„ ì‚½ì…
 				if (max_stack.data[max_stack.top] < new_block)
 					push(&max_stack, new_block);
 				else
@@ -76,7 +77,7 @@ int main() {
 				break;
 
 			case 2:
-				//ÃÖ¼Ò°ª ½ºÅÃ, ÃÖ´ë°ª ½ºÅÃÀÇ ¸Ç À§ÀÇ °ªÀ» »èÁ¦
+				//ìµœì†Œê°’ ìŠ¤íƒ, ìµœëŒ€ê°’ ìŠ¤íƒì˜ ë§¨ ìœ„ì˜ ê°’ì„ ì‚­ì œ
 				if (min_stack.top != infinity)
 					pop(&min_stack);
 				if (max_stack.top != -infinity)
