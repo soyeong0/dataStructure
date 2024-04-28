@@ -1,3 +1,4 @@
+// 202313750 ê¶Œì†Œì˜
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,7 +8,7 @@ int main()
 
 	p1 = (double*)malloc(sizeof(double));
 	if (p1 == NULL) {
-		fprintf(stderr, "¸Ş¸ğ¸®°¡ ºÎÁ·ÇØ¼­ ÇÒ´çÇÒ ¼ö ¾ø½À´Ï´Ù.\n");
+		fprintf(stderr, "ë©”ëª¨ë¦¬ê°€ ë¶€ì¡±í•´ì„œ í• ë‹¹í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
 		exit(1);
 	}
 
