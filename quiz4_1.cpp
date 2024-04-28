@@ -1,3 +1,4 @@
+// 202313750 ê¶Œì†Œì˜
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,7 +8,7 @@ typedef struct {
 	char name[100];
 } element;
 
-typedef struct ListNode { // ³ëµå Å¸ÀÔÀ» ±¸Á¶Ã¼·Î Á¤ÀÇÇÑ´Ù.
+typedef struct ListNode { // ë…¸ë“œ íƒ€ì…ì„ êµ¬ì¡°ì²´ë¡œ ì •ì˜í•œë‹¤.
 	element data;
 	struct ListNode* link;
 } ListNode;
@@ -18,7 +19,7 @@ void print_list(ListNode* head) {
 	printf("NULL \n");
 }
 
-// ¸Ç ¾Õ¿¡ ³ëµå »ğÀÔ
+// ë§¨ ì•ì— ë…¸ë“œ ì‚½ì…
 ListNode* insert_first(ListNode* head, element value) {
 	ListNode* p = (ListNode*)malloc(sizeof(ListNode));
 	p->data = value;
@@ -27,7 +28,7 @@ ListNode* insert_first(ListNode* head, element value) {
 	return head;
 }
 
-// ³ëµå pre µÚ¿¡ »õ·Î¿î ³ëµå »ğÀÔ
+// ë…¸ë“œ pre ë’¤ì— ìƒˆë¡œìš´ ë…¸ë“œ ì‚½ì…
 ListNode* insert(ListNode* head, ListNode* pre, element value) {
 	ListNode* p = (ListNode*)malloc(sizeof(ListNode));
 	p->data = value;
@@ -36,7 +37,7 @@ ListNode* insert(ListNode* head, ListNode* pre, element value) {
 	return head;
 }
 
-// ¸Ç ¾ÕÀÇ ³ëµå¸¦ »èÁ¦
+// ë§¨ ì•ì˜ ë…¸ë“œë¥¼ ì‚­ì œ
 ListNode* remove_first(ListNode* head) {
 	ListNode* removed;
 	if (head == NULL)
@@ -47,7 +48,7 @@ ListNode* remove_first(ListNode* head) {
 	return head;
 }
 
-// pre°¡ °¡¸®Å°´Â ³ëµåÀÇ ´ÙÀ½ ³ëµå¸¦ »èÁ¦ÇÑ´Ù. 
+// preê°€ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œì˜ ë‹¤ìŒ ë…¸ë“œë¥¼ ì‚­ì œí•œë‹¤. 
 ListNode* remove(ListNode* head, ListNode* pre) {
 	ListNode* removed;
 	removed = pre->link;
