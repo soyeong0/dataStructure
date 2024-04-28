@@ -1,3 +1,4 @@
+// 202313750 ê¶Œì†Œì˜
 #include <stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,7 +11,7 @@ typedef struct {
 polynomial terms[MAX_TERMS] = { { 8,3 },{ 7,1 },{ 1,0 },{ 10,3 },{ 3,2 },{ 1,0 } };
 int avail = 6;
 
-// µÎ °³ÀÇ Á¤¼ö¸¦ ºñ±³
+// ë‘ ê°œì˜ ì •ìˆ˜ë¥¼ ë¹„êµ
 char compare(int a, int b)
 {
 	if (a > b) return '>';
@@ -18,11 +19,11 @@ char compare(int a, int b)
 	else return '<';
 }
 
-// »õ·Î¿î Ç×À» ´ÙÇ×½Ä¿¡ Ãß°¡ÇÑ´Ù.
+// ìƒˆë¡œìš´ í•­ì„ ë‹¤í•­ì‹ì— ì¶”ê°€í•œë‹¤.
 void attach(float coef, int expon)
 {
 	if (avail > MAX_TERMS) {
-		fprintf(stderr, "Ç×ÀÇ °³¼ö°¡ ³Ê¹« ¸¹À½\n");
+		fprintf(stderr, "í•­ì˜ ê°œìˆ˜ê°€ ë„ˆë¬´ ë§ìŒ\n");
 		exit(1);
 	}
 	terms[avail].coef = coef;
@@ -36,20 +37,20 @@ void poly_sub2(int Astart, int Aend, int Bstart, int Bend, int* Cstart, int* Cen
 	*Cstart = avail;
 	while (Astart <= Aend && Bstart <= Bend) {
 		switch (compare(terms[Astart].expon, terms[Bstart].expon)) {
-		case '>': // AÀÇ Â÷¼ö > BÀÇ Â÷¼ö
+		case '>': // Aì˜ ì°¨ìˆ˜ > Bì˜ ì°¨ìˆ˜
 			attach(terms[Astart].coef, terms[Astart].expon);
 			Astart++;
 			break;
-		case '=': // AÀÇ Â÷¼ö == BÀÇ Â÷¼ö
+		case '=': // Aì˜ ì°¨ìˆ˜ == Bì˜ ì°¨ìˆ˜
 			tempcoef = terms[Astart].coef - terms[Bstart].coef;
-			if (tempcoef) // °è¼öÀÇ Â÷°¡ 0ÀÌ¸é tempcoef´Â false°¡ µÇ¾î if¹® ÀÛµ¿µÇÁö ¾ÊÀ½.
-				          // °è»ê °á°ú °è¼ö°¡ 0ÀÎ Ç×Àº Ãâ·ÂÇÏÁö ¾ÊÀ½.
-				          // °è¼ö°¡ 0ÀÎ Ç×µµ Ãâ·ÂÇÏ·Á¸é if ¾øÀÌ attach¸¸ ¾¸.
+			if (tempcoef) // ê³„ìˆ˜ì˜ ì°¨ê°€ 0ì´ë©´ tempcoefëŠ” falseê°€ ë˜ì–´ ifë¬¸ ì‘ë™ë˜ì§€ ì•ŠìŒ.
+				          // ê³„ì‚° ê²°ê³¼ ê³„ìˆ˜ê°€ 0ì¸ í•­ì€ ì¶œë ¥í•˜ì§€ ì•ŠìŒ.
+				          // ê³„ìˆ˜ê°€ 0ì¸ í•­ë„ ì¶œë ¥í•˜ë ¤ë©´ if ì—†ì´ attachë§Œ ì”€.
 				attach(tempcoef, terms[Astart].expon);
 			Astart++;
 			Bstart++;
 			break;
-		case '<': // AÀÇ Â÷¼ö < BÀÇ Â÷¼ö
+		case '<': // Aì˜ ì°¨ìˆ˜ < Bì˜ ì°¨ìˆ˜
 			attach(-terms[Bstart].coef, terms[Bstart].expon);
 			Bstart++;
 			break;
@@ -57,10 +58,10 @@ void poly_sub2(int Astart, int Aend, int Bstart, int Bend, int* Cstart, int* Cen
 	}
 
 
-	// AÀÇ ³ª¸ÓÁö Ç×µéÀ» ÀÌµ¿ÇÔ
+	// Aì˜ ë‚˜ë¨¸ì§€ í•­ë“¤ì„ ì´ë™í•¨
 	for (; Astart <= Aend; Astart++)
 		attach(terms[Astart].coef, terms[Astart].expon);
-	// BÀÇ ³ª¸ÓÁö Ç×µéÀ» ÀÌµ¿ÇÔ
+	// Bì˜ ë‚˜ë¨¸ì§€ í•­ë“¤ì„ ì´ë™í•¨
 	for (; Bstart <= Bend; Bstart++)
 		attach(terms[Bstart].coef, terms[Bstart].expon);
 	*Cend = avail - 1;
