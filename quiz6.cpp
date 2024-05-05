@@ -1,4 +1,5 @@
 // 202313750 권소영
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -43,10 +44,10 @@ element pop(StackType* s) {
 int main() {
 	int infinity = 987654321;
 	int problem_num = 0;
-	scanf_s("%d", &problem_num); // 테스트 케이스 숫자 입력받기
+	scanf("%d", &problem_num); // 테스트 케이스 숫자 입력받기
 	for (int problem = 0; problem < problem_num; problem++) {
 		int query_num = 0;
-		scanf_s("%d", &query_num); // 질의의 숫자 입력받기
+		scanf("%d", &query_num); // 질의의 숫자 입력받기
 		StackType min_stack; //최소값을 넣는 스택
 		StackType max_stack; //최대값을 넣는 스택
 		init_stack(&min_stack);
@@ -56,10 +57,10 @@ int main() {
 
 		for (int query = 0; query < query_num; query++) {
 			int input1, input2, new_block = 0;
-			scanf_s("%d", &input1);
+			scanf("%d", &input1);
 			switch (input1) {
 			case 1:
-				scanf_s("%d", &input2);
+				scanf("%d", &input2);
 				new_block = input2;
 
 				// 최소값 스택의 맨 위의 값을 비교해서, 새 블록과, 기존의 값 중 더 작은 값을 삽입
